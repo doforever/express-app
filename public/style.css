@@ -1,0 +1,13 @@
+h1 {
+  font-weight: lighter;
+  font-style: italic;
+}
+
+.dark-layout {
+  background-color: black;
+  color: whitesmoke;
+}
+
+.dark-layout a {
+  color: aqua;
+}
