@@ -6,29 +6,26 @@ const app = express();
 app.engine('.hbs', hbs());
 app.set('view engine', '.hbs');
 
-app.use((req, res, next) => {
-  res.show = (name) => {
-    res.sendFile(path.join(__dirname, `/views/${name}`));
-  };
-  next();
-});
-
 app.use(express.static(path.join(__dirname, '/public')));
 
-app.use('/user', (req, res) => {
-  res.show('not_logged.html');
-});
-
 app.get('/', (req, res) => {
-  res.show('index.html');
-});
-
-app.get('/home', (req, res) => {
-  res.show('index.html');
+  res.render('index', { layout: false });
 });
 
 app.get('/about', (req, res) => {
-  res.show('about.html');
+  res.render('about', { layout: false });
+});
+
+app.get('/contact', (req, res) => {
+  res.render('contact', { layout: false });
+});
+
+app.get('/info', (req, res) => {
+  res.render('info', { layout: false });
+});
+
+app.get('/history', (req, res) => {
+  res.render('history', { layout: false });
 });
 
 app.get('/hello/:name', (req, res) => {
