@@ -8,9 +8,6 @@
 # testing
 /coverage
 
-#uploads
-public/uploads
-
 # production
 /build
 

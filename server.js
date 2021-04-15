@@ -6,7 +6,18 @@ const multer = require('multer');
 const app = express();
 app.engine('.hbs', hbs());
 app.set('view engine', '.hbs');
-const upload = multer({ dest: 'uploads/' });
+// const upload = multer({ dest: 'public/uploads/' });
+
+const storage = multer.diskStorage({
+  destination: function (req, file, cb) {
+    cb(null, 'public/')
+  },
+  filename: function (req, file, cb) {
+    cb(null, file.fieldname)
+  }
+})
+
+const upload = multer({ storage: storage })
 
 app.use(express.static(path.join(__dirname, '/public')));
 // app.use(express.urlencoded({ extended: false }));
